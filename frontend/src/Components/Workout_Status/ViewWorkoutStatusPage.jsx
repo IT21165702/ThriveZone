@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Navigation from '../Navigation/Navigation';
-import profileIcon from '../User/user.jpg'; 
+import profileIcon from '../User/user.jpg';
 import fitImage from './fit.jpg';
 import bg_c from './bg_c.jpg'; // Import the background image
-import FriendSuggestions from '../FriendSuggestions/FriendSuggestions'; // Import the FriendSuggestions component
 
 function ViewWorkoutStatusPage() {
     const [workoutStatusList, setWorkoutStatusList] = useState([]);
@@ -17,7 +14,6 @@ function ViewWorkoutStatusPage() {
         weight: '',
         description: ''
     });
-    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchWorkoutStatus() {
@@ -73,15 +69,12 @@ function ViewWorkoutStatusPage() {
     };
 
     const navigateToHomePage = () => {
-        navigate('/');
+        // Implement navigation logic here if needed
     };
 
     return (
         <div className="flex justify-center bg-gray-100 min-h-screen">
-            <div className="w-1/4 lg:hidden xl:block">
-                <Navigation />
-            </div>
-            <div className="w-full lg:w-3/4 xl:w-1/2 max-w-4xl mx-auto p-4">
+            <div className="w-full p-4">
                 <div className="flex items-center mb-8" onClick={navigateToHomePage} style={{ cursor: 'pointer' }}>
                     <div className="flex-shrink-0 mr-4">
                         <img className="w-12 h-12 rounded-full" src={profileIcon} alt="Profile" />
@@ -167,9 +160,6 @@ function ViewWorkoutStatusPage() {
                         </div>
                     </div>
                 ))}
-            </div>
-            <div className="w-1/4 lg:hidden xl:block">
-                <FriendSuggestions />
             </div>
         </div>
     );
